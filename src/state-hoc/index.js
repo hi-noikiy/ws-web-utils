@@ -63,7 +63,7 @@ const stateHOC = (initHocParams = {})=>{
                 }
             }
             showView(fetchStatus){
-                
+
                 const {
                     height,
                     LoadingView,

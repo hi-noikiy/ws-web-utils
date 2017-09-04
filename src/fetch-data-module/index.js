@@ -1,8 +1,6 @@
 import "isomorphic-fetch";
-import {
-    Toast,
-    Modal,
-} from "antd-mobile";
+import Toast from "antd-mobile/lib/toast";
+import Modal from "antd-mobile/lib/toast";
 
 
  export default class FetchDataModule {
