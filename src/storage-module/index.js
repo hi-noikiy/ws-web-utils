@@ -1,4 +1,4 @@
-import Toast from "antd-mobile/lib/toast";
+import {Toast} from "antd-mobile";
 
 const storageString = (storageString)=>{
     if (storageString && typeof(storageString)=='string') {
