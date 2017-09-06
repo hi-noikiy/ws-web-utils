@@ -69,7 +69,7 @@ import {Toast,Modal} from "antd-mobile";
      static get({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc}) {
          return fetch(API_URL[ApiName].fetchUrl + "?" + toQueryString(params), {
              method: "GET",
-             headers: headers
+             headers: Object.assign({},headers,{"Content-Type": "application/x-www-form-urlencoded"}),
          })
              .then(res => {
                  return FetchDataModule.HandleRequestResults({
@@ -93,7 +93,7 @@ import {Toast,Modal} from "antd-mobile";
      static post({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc}) {
          return fetch(API_URL[ApiName].fetchUrl, {
              method: "POST",
-             headers: headers,
+             headers: Object.assign({},headers,{"Content-Type": "application/json"}),
              body: JSON.stringify(params)
          })
              .then(res => {
@@ -218,7 +218,7 @@ import {Toast,Modal} from "antd-mobile";
          const errorApiDeveloper = developerVerification(API_URL[ApiName].developer,APP_ROOT_CONFIG)
          fetch(APP_ROOT_CONFIG.errorCollectApi, {
              method: "POST",
-             headers: headers,
+             headers: Object.assign({},headers,{"Content-Type": "application/json"}),
              body: toQueryString({
                  project: `${APP_ROOT_CONFIG.AppName}${APP_ROOT_CONFIG.AppPlatform}端`,
                  post_author: APP_ROOT_CONFIG.errorApiDeveloper.name,
