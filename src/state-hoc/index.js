@@ -32,7 +32,7 @@ const stateHOC = (initHocParams = {})=>{
                 // ErrorView,
             };
             componentDidMount(){
-                super.hocComponentDidMount()
+                super.hocComponentDidMount && super.hocComponentDidMount()
             }
             render() {
 
@@ -43,20 +43,18 @@ const stateHOC = (initHocParams = {})=>{
                 const {
                     detail,
                     keyFunc,
-                    key,
                 } = hocParams
 
                 if(detail){
 
-                    if(!keyFunc||!key){
-                        Toast.error('装饰器参数传递错误')
+                    const key = super.hocDetailKey&&super.hocDetailKey()
+
+                    if(!key){
+                        Toast.fail('装饰器参数传递错误')
                         return null
                     }
 
-                    const {params} = this.props.navigation.state;
-                    const id = params[key]
-
-                    return this.showView(fetchStatus[keyFunc(id)])
+                    return this.showView(fetchStatus[key])
 
                 }else {
                     return this.showView(fetchStatus)
