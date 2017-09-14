@@ -86,7 +86,7 @@ const stateHOC = (initHocParams = {})=>{
                         if(super.hocNullDataFunc&&super.hocNullDataFunc()){
                             return  <NullDataView {...LoadingViewStyle}/>
                         }else {
-                            return <WrappedComponent {...this.props}/>
+                            return <WrappedComponent {...this.props} stateHOCState={this.state}/>
                         }
 
                     case FetchStatus.f:
