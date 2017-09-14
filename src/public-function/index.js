@@ -242,3 +242,14 @@ export function parseQuery(query) {
     }
     return obj;
 }
+
+
+export function encodeParseQuery(query) {
+    var parseSearch = query.split("?").join("");
+    var reg = /([^=&\s]+)[=\s]*([^=&\s]*)/g;
+    var obj = {};
+    while (reg.exec(parseSearch)) {
+        obj[RegExp.$1] = RegExp.$2;
+    }
+    return obj;
+}

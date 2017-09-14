@@ -1,3 +1,4 @@
+require('babel-polyfill')
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FetchStatus from '../fetch-status';
@@ -5,6 +6,7 @@ import {
     LoadingView,
     FailureView,
     ErrorView,
+    NullDataView,
 } from './fetchView';
 import {
     Toast,
@@ -17,19 +19,16 @@ const stateHOC = (initHocParams = {})=>{
         LoadingView,
         FailureView,
         ErrorView,
+        NullDataView,
     }, initHocParams)
     return (WrappedComponent)=>{
         return class StateContainer extends WrappedComponent {
             static navigationOptions = WrappedComponent.navigationOptions;
             static propTypes = {
-                // LoadingView : PropTypes.func,
-                // FailureView : PropTypes.func,
-                // ErrorView : PropTypes.func,
+
             };
             static defaultProps = {
-                // LoadingView,
-                // FailureView,
-                // ErrorView,
+
             };
             componentDidMount(){
                 super.hocComponentDidMount && super.hocComponentDidMount()
@@ -67,6 +66,7 @@ const stateHOC = (initHocParams = {})=>{
                     LoadingView,
                     FailureView,
                     ErrorView,
+                    NullDataView,
                 } = hocParams
 
                 const LoadingViewStyle = Object.assign({},{
@@ -82,11 +82,17 @@ const stateHOC = (initHocParams = {})=>{
                             />
                         )
                     case FetchStatus.s:
-                        return <WrappedComponent {...this.props}/>
+
+                        if(super.hocNullDataFunc&&super.hocNullDataFunc()){
+                            return  <NullDataView {...LoadingViewStyle}/>
+                        }else {
+                            return <WrappedComponent {...this.props}/>
+                        }
+
                     case FetchStatus.f:
-                        return  <FailureView autoLayout/>
+                        return  <FailureView {...LoadingViewStyle}/>
                     case FetchStatus.e:
-                        return  <ErrorView autoLayout/>
+                        return  <ErrorView {...LoadingViewStyle}/>
                     default :
                         return null
                 }
