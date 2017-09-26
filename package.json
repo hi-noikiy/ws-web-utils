@@ -1,6 +1,6 @@
 {
   "name": "ws-web-utils",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Can only be used internally for the project",
   "main": "lib/index.js",
   "scripts": {

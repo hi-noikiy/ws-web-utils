@@ -1,10 +1,10 @@
-import {Toast} from "antd-mobile";
+import {libraryConfig} from "../libraryConfig";
 
 const storageString = (storageString)=>{
-    if (storageString && typeof(storageString)=='string') {
+    if (storageString && typeof(storageString)==='string') {
         return `${storageString}`
     } else {
-        Toast.info('localStorage存储键名异常');
+        libraryConfig.ToastError('localStorage存储键名异常');
     }
 }
 

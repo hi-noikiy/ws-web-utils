@@ -8,9 +8,7 @@ import {
     ErrorView,
     NullDataView,
 } from './fetchView';
-import {
-    Toast,
-} from "antd-mobile";
+import {libraryConfig} from "../libraryConfig";
 
 
 
@@ -49,7 +47,7 @@ const stateHOC = (initHocParams = {})=>{
                     const key = super.hocDetailKey&&super.hocDetailKey()
 
                     if(!key){
-                        Toast.fail('装饰器参数传递错误')
+                        libraryConfig.ToastError('装饰器参数传递错误')
                         return null
                     }
 

@@ -1,5 +1,6 @@
 import "isomorphic-fetch";
-import {Toast,Modal} from "antd-mobile";
+import {libraryConfig} from "../libraryConfig";
+
 
 
  export default class FetchDataModule {
@@ -20,7 +21,7 @@ import {Toast,Modal} from "antd-mobile";
                  return FetchDataModule.fetchData({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc});
              }
          } else {
-             Modal.alert("FetchDataModule模块调用异常，请检查传递参数");
+             libraryConfig.ModalAlert("FetchDataModule模块调用异常，请检查传递参数");
          }
      }
 
@@ -29,14 +30,14 @@ import {Toast,Modal} from "antd-mobile";
      */
      static fetchData({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc}) {
          if (API_URL[ApiName].showLoading) {
-             Toast.loading('loading...', 0, ()=>{}, true)
+             libraryConfig.ToastLoading('loading...', 0, ()=>{}, true)
          }
          if (API_URL[ApiName].method == "GET") {
              return FetchDataModule.get({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc})
          } else if (API_URL[ApiName].method == "POST") {
              return FetchDataModule.post({ApiName, params, API_URL, headers, APP_ROOT_CONFIG, removeUserInfoFunc})
          } else {
-             Modal.alert("接口预定义信息错误", `接口名:${ApiName}${"\b"}错误类型:请求方式异常`, [
+             libraryConfig.ModalAlert("接口预定义信息错误", `接口名:${ApiName}${"\b"}错误类型:请求方式异常`, [
                  {
                      text: "查看接口描述",
                      onPress: () => {
@@ -117,13 +118,13 @@ import {Toast,Modal} from "antd-mobile";
      */
      static HandleRequestResults({res, ApiName, params, API_URL, APP_ROOT_CONFIG, removeUserInfoFunc, headers}) {
          if (API_URL[ApiName].showLoading) {
-             Toast.hide();
+             libraryConfig.ToastHide();
          }
          if (!res.ok) {
              if(APP_ROOT_CONFIG.env.showNetWorkErrorInfo){
                  res.text()
                  .then(err => {
-                     Modal.alert(
+                     libraryConfig.ModalAlert(
                          "接口请求错误", `接口名:${API_URL[ApiName].apiUrl}`,
                          [
                              {
@@ -146,7 +147,7 @@ import {Toast,Modal} from "antd-mobile";
                  });
              }
              if(APP_ROOT_CONFIG.env.defaultUploadNetWorkErrorInfo){
-                 Toast.info('捕获到服务器返回数据类型异常，正在自动提交错误信息');
+                 libraryConfig.ToastInfo('捕获到服务器返回数据类型异常，正在自动提交错误信息');
                  res.text().then(e => {
                      FetchDataModule.ErrorApiFetch({
                          ApiName,
@@ -167,7 +168,7 @@ import {Toast,Modal} from "antd-mobile";
                          if (res.errcode != -999) {
                              resolve(res);
                          } else {
-                             Toast.info("token验证异常，请重新登录");
+                             libraryConfig.ToastInfo("token验证异常，请重新登录");
                              removeUserInfoFunc && removeUserInfoFunc()
                          }
                      });
@@ -229,14 +230,14 @@ import {Toast,Modal} from "antd-mobile";
          })
          .then(res => {
              if (!res.ok) {
-                 Modal.alert("提交错误的接口都报错了", `肿么办ﾍ(;´Д｀ﾍ)`, [
+                 libraryConfig.ModalAlert("提交错误的接口都报错了", `肿么办ﾍ(;´Д｀ﾍ)`, [
                      {
                          text: "GG",
-                         onPress: () => {Toast.warn('你选择了GG')}
+                         onPress: () => {libraryConfig.ToastWarn('你选择了GG')}
                      },{
                          text: "人肉联系开发人员",
                          onPress: () => {
-                             Modal.alert(
+                             libraryConfig.ModalAlert(
                                  `接口的使用者是 ${APP_ROOT_CONFIG.errorApiDeveloper.name}`,
                                  '是否要拨打电话联系开发者',
                                  [
@@ -261,7 +262,7 @@ import {Toast,Modal} from "antd-mobile";
              }else {
                  res.json()
                  .then(e => {
-                     Toast.info("服务器异常提交成功");
+                     libraryConfig.ToastInfo("服务器异常提交成功");
                  })
              }
          })
