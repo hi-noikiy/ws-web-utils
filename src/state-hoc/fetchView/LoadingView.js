@@ -1,5 +1,6 @@
-import React,{ Component,PropTypes } from 'react';
+import React,{ Component } from 'react';
 import { View } from "react-web-dom";
+import PropTypes from 'prop-types';
 
 export class LoadingView extends Component{
     static propTypes = {
@@ -13,7 +14,7 @@ export class LoadingView extends Component{
     render() {
         return (
             <View style={{alignItems: 'center'}}>
-                <div>请求中</div>
+                <View>请求中</View>
             </View>
         )
     }
