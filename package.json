@@ -1,6 +1,6 @@
 {
   "name": "ws-web-utils",
-  "version": "1.2.8",
+  "version": "1.3.4",
   "description": "Can only be used internally for the project",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "build:commonjs:watch": "BABEL_ENV=commonjs babel src -y-out-dir lib --watch",
     "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/index.js lib/index.js",
     "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js lib/index.min.js",
-    "build": "NODE_ENV=development webpack --display-modules --sort-modules-by size"
+    "build": "NODE_ENV=production webpack --display-modules --sort-modules-by size"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babelify": "^7.3.0",
     "css-loader": "^0.28.7",
+    "prop-types": "^15.6.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5"
   },

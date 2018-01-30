@@ -20,7 +20,10 @@ var config = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify(env),
+      "process.env": {
+          NODE_ENV: JSON.stringify("production")
+      }
     }),
   ],
   externals : [
@@ -47,20 +50,12 @@ var config = {
             },
             output: {
                 screw_ie8: false
-            }
-        }),
-        new webpack.DefinePlugin({
-            // <-- 减少 React 大小的关键
-            "process.env": {
-                NODE_ENV: JSON.stringify("production")
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
+            },
             comments: false, //去掉注释
             compress: {
                 warnings: false //忽略警告,要不然会有一大堆的黄色字体出现……
-            }
-        }), //最小化一切
+            },
+        }),
         new webpack.optimize.AggressiveMergingPlugin() //合并块
     );
 
