@@ -38,7 +38,10 @@ $ npm install --save ws-web-utils
 
 ## `fetchStatus`渲染规则
 
-* fetchStatus.l
+* `fetchStatus.l` render LoadingView
+* `fetchStatus.f` render FailureView
+* `fetchStatus.e` render ErrorView
+* `fetchStatus.s` render 包裹的组件
 
 #### 废旧文档 \(忽略以下\)
 
@@ -64,6 +67,3 @@ $ npm install --save ws-web-utils
 | :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
-
-
-
