@@ -1,4 +1,5 @@
 # ws-web-utils
+
 Can only be used internally for the project
 
 ## Installation
@@ -7,12 +8,18 @@ Can only be used internally for the project
 $ npm install --save ws-web-utils
 ```
 
-## stateHoc API (props , params)
+## **API**
+
+```
+<stateHoc>
+```
+
+## stateHoc API \(props , params\)
 
 ### Params Config
 
 | Param | Default | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
+| :--- | :---: | :---: | :--- |
 | LoadingView | `LoadingView` | `Class/Func` | 等待状态 |
 | FailureView | `FailureView` | `Class/Func` | 失败状态 |
 | ErrorView | `ErrorView` | `Class/Func` | 错误状态 |
@@ -24,6 +31,9 @@ $ npm install --save ws-web-utils
 ### Props Config
 
 | Prop | Default | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
+| :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
+
+
+
