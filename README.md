@@ -30,8 +30,10 @@ $ npm install --save ws-web-utils
 * ##### `hocNullDataFunc` \(_Function_\): 默认`null`，如果设置，则需要返回一个`boolean`值，用于判断是否显示`NullDataView`组件
 
 ## `Component`
-### 子组件下的成员方法
-* ##### `hocComponentDidMount` \(_Function_\): 如果存在，会在高级组件的render后像`componentDidMount`一样的生命周期执行,常用语fetch请求等
+
+#### 子组件下的成员方法
+
+* #### `hocComponentDidMount` \(_Function_\): 如果存在，会在高级组件的render后像`componentDidMount`一样的生命周期执行,常用语fetch请求等
 
 ##### Examples
 
@@ -128,3 +130,6 @@ console.log(fetchStatus)
 | :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
+
+
+
