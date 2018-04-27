@@ -22,7 +22,7 @@ $ npm install --save ws-web-utils
 * ##### `NullDataView`
 * ##### `detail`  \(_Boolean_\): 如果 true ，则会通过 `hocDetailKey` 来获得`key`值用来处理渲染判断
 * ##### `hocDetailKey` \(_Function_\): 要求返回一个`string`类型的值，这个值是`props.fetchStatus`的渲染键名
-* ##### `fetchStatus` \(_String or Object_\): 
+* ##### `fetchStatus` \(_String or Object_\): `detail`模式下要求是`string`类型，遵循`fetchStatus`渲染规则(如下)
 
 ## stateHoc API \(props , params\)
 
