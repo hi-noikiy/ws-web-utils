@@ -29,6 +29,48 @@ $ npm install --save ws-web-utils
 
 * ##### `hocNullDataFunc` \(_Function_\): 默认`null`，如果设置，则需要返回一个`boolean`值，用于判断是否显示`NullDataView`组件
 
+##### Examples
+
+```js
+import {stateHoc,fetchStatus} from 'ws-web-utils'
+import { connect } from "react-redux";
+
+//默认模式
+@connect(()=>({
+    fetchStatus: fetchStatus.s
+}))
+@stateHoc()
+class HourseDetail extends Component{
+    hocComponentDidMount() {
+        //todo more
+    }
+    render(){
+        return <div>success</div>
+    }
+}
+
+//detail模式
+@connect(()=>({
+    fetchStatus: {
+        '1': fetchStatus.s
+    }
+}))
+@stateHoc({
+    detail: true
+})
+class HourseDetail extends Component{
+    hocDetailKey(){
+        return '1'
+    }
+    hocComponentDidMount() {
+        //todo fetch
+    }
+    render(){
+        return <div>success</div>
+    }
+}
+```
+
 ## `fetchStatus` \(_Object_\)
 
 * ##### `l`  loading
