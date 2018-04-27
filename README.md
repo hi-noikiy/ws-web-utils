@@ -16,10 +16,10 @@ $ npm install --save ws-web-utils
 
 #### `[options] (Object)`
 
-* ##### `LoadingView`
-* ##### `FailureView`
-* ##### `ErrorView`
-* ##### `NullDataView`
+* ##### `LoadingView` \(_Class/Func_\): loading状态下的显示组件
+* ##### `FailureView` \(_Class/Func_\): failure状态下的显示组件
+* ##### `ErrorView` \(_Class/Func_\): error状态下的显示组件
+* ##### `NullDataView` \(_Class/Func_\): nullData状态下的显示组件
 * ##### `detail`  \(_Boolean_\): 如果 true ，则会通过 `hocDetailKey` 来获得`key`值用来处理渲染判断
 * ##### `hocDetailKey` \(_Function_\): 要求返回一个`string`类型的值，这个值是`props.fetchStatus`的渲染键名
 * ##### `fetchStatus` \(_String or Object_\):
