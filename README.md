@@ -36,6 +36,21 @@ $ npm install --save ws-web-utils
 * ##### `e`  error
 * ##### `s`  success
 
+##### Examples
+
+```js
+import {fetchStatus} from 'ws-web-utils'
+console.log(fetchStatus)
+/*
+    {
+        l: 'loading',
+        f: 'failuer',
+        e: 'error',
+        s: 'success',
+    }
+*/
+```
+
 ## `fetchStatus`渲染规则
 
 * `fetchStatus.l` render  **LoadingView**
