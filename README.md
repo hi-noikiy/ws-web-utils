@@ -38,7 +38,7 @@ $ npm install --save ws-web-utils
 
 ## `fetchStatus`渲染规则
 
-* `fetchStatus.l` render ##LoadingView
+* `fetchStatus.l` render LoadingView
 * `fetchStatus.f` render FailureView
 * `fetchStatus.e` render ErrorView
 * `fetchStatus.s` render 包裹的组件
