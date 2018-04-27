@@ -28,6 +28,15 @@ $ npm install --save ws-web-utils
   `detail`模式下要求是`object`类型，取`object[key]`来用于判断渲染，遵循`fetchStatus`渲染规则\(如下\)
 * ##### `hocNullDataFunc` \(_Function_\): 默认`null`，如果设置，则需要返回一个`boolean`值，用于判断是否显示`NullDataView`组件
 
+## `fetchStatus` \(_Object\)
+
+* ##### `LoadingView` \(_Class/Func_\): loading状态下的显示组件
+* ##### `FailureView` \(_Class/Func_\): failure状态下的显示组件
+* ##### `ErrorView` \(_Class/Func_\): error状态下的显示组件
+* ##### `NullDataView` \(_Class/Func_\): nullData状态下的显示组件
+
+## `fetchStatus`渲染规则
+
 #### 废旧文档 \(忽略以下\)
 
 ---
