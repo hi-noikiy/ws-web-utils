@@ -20,12 +20,12 @@ $ npm install --save ws-web-utils
 * ##### `FailureView`
 * ##### `ErrorView`
 * ##### `NullDataView`
-* ##### `detail`  \(_Boolean_\): 如果 true ，则会通过 
+* ##### `detail`  \(_Boolean_\): 如果 true ，则会通过
 * ##### `hocDetailKey`
 
 ##### 
 
-#### \#
+#### 
 
 ## stateHoc API \(props , params\)
 
