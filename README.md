@@ -28,6 +28,7 @@ $ npm install --save ws-web-utils
   `detail`模式下要求是`object`类型，取`object[key]`来用于判断渲染，遵循`fetchStatus`渲染规则\(如下\)
 
 * ##### `hocNullDataFunc` \(_Function_\): 默认`null`，如果设置，则需要返回一个`boolean`值，用于判断是否显示`NullDataView`组件
+* ##### `hocComponentDidMount` \(_Function_\): 如果存在，会在高级组件的render后像`componentDidMount`一样的生命周期执行,常用语fetch请求等
 
 ##### Examples
 
@@ -124,6 +125,3 @@ console.log(fetchStatus)
 | :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
-
-
-
