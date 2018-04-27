@@ -110,6 +110,10 @@ console.log(fetchStatus)
 * `fetchStatus.e` render  **ErrorView**
 * `fetchStatus.s` render  **包裹的组件**
 
+#### 
+
+#### 
+
 #### 废旧文档 \(忽略以下\)
 
 ---
