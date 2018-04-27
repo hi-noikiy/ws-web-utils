@@ -37,6 +37,8 @@ $ npm install --save ws-web-utils
 
 ## `fetchStatus`渲染规则
 
+
+
 #### 废旧文档 \(忽略以下\)
 
 ---
