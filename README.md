@@ -10,7 +10,7 @@ $ npm install --save ws-web-utils
 
 ## **API**
 
-# `stateHoc([options])`
+## `stateHoc([options])`
 
 #### stateHoc是一个高阶组件，用于处理业务组件的等待、请求、异常处理显示等...
 
@@ -52,6 +52,3 @@ $ npm install --save ws-web-utils
 | :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
-
-
-
