@@ -30,10 +30,10 @@ $ npm install --save ws-web-utils
 
 ## `fetchStatus` \(_Object_\)
 
-* ##### `LoadingView` \(_Class/Func_\): loading状态下的显示组件
-* ##### `FailureView` \(_Class/Func_\): failure状态下的显示组件
-* ##### `ErrorView` \(_Class/Func_\): error状态下的显示组件
-* ##### `NullDataView` \(_Class/Func_\): nullData状态下的显示组件
+* ##### `l` \(_Class/Func_\): loading状态下的显示组件
+* ##### `f` \(_Class/Func_\): failure状态下的显示组件
+* ##### `e` \(_Class/Func_\): error状态下的显示组件
+* ##### `s` \(_Class/Func_\): nullData状态下的显示组件
 
 ## `fetchStatus`渲染规则
 
