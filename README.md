@@ -10,9 +10,7 @@ $ npm install --save ws-web-utils
 
 ## **API**
 
-```
-<stateHoc>
-```
+### ```<stateHoc>```
 
 ## stateHoc API \(props , params\)
 
@@ -34,6 +32,3 @@ $ npm install --save ws-web-utils
 | :--- | :---: | :---: | :--- |
 | fetchStatus | `undefined` | `String` | 详见内部FetchStatus |
 | orther props | `...this.props` | `Object` | ... |
-
-
-
