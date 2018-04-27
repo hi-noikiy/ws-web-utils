@@ -35,6 +35,8 @@ $ npm install --save ws-web-utils
 
 * #### `hocComponentDidMount` \(_Function_\): 如果存在，会在高级组件的render后像`componentDidMount`一样的生命周期执行,常用语fetch请求等
 
+---
+
 ##### Examples
 
 ```js
@@ -83,6 +85,8 @@ class HourseDetail extends Component{
 * ##### `f`  failure
 * ##### `e`  error
 * ##### `s`  success
+
+---
 
 ##### Examples
 
