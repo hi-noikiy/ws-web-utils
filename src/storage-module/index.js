@@ -9,13 +9,13 @@ const storageString = (storageString)=>{
 }
 
 export default class StorageModule{
-    static _getUserInfo(){
+    static getUserInfo(){
         return localStorage.getItem(storageString('userInfo'))
     }
-    static _setUserInfo(historyItem){
+    static setUserInfo(historyItem){
     	return localStorage.setItem(storageString('userInfo'),JSON.stringify(historyItem))
     }
-    static _removeUserInfo(){
+    static removeUserInfo(){
     	return localStorage.removeItem(storageString('userInfo'))
     }
     static set(key,value){
@@ -24,7 +24,7 @@ export default class StorageModule{
     static get(e){
     	return localStorage.getItem(storageString(e))
     }
-    static _removeItem(key){
+    static removeItem(key){
     	return localStorage.removeItem(storageString(key))
     }
 }

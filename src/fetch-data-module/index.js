@@ -40,9 +40,10 @@ import {libraryConfig} from "../libraryConfig";
              API_URL,
              Toast,
              Modal,
+             showLoading,
          } = libraryConfig
          if (API_URL[apiName].showLoading) {
-             Toast.loading('loading...', 0)
+             showLoading()
          }
          if (API_URL[apiName].method == "GET") {
              return this.get({apiName, params})
@@ -141,18 +142,18 @@ import {libraryConfig} from "../libraryConfig";
      static HandleRequestResults({res, apiName, params}) {
          const {
              API_URL,
-             hideLoading,
              APP_ROOT_CONFIG,
              ToastError,
              removeUserInfoFunc,
              Toast,
              Modal,
+             hideLoading,
          } = libraryConfig
          const {
              env
          } = APP_ROOT_CONFIG
          if (API_URL[apiName].showLoading) {
-             Toast.hide();
+             hideLoading()
          }
          if (!res.ok) {
              if(env.showNetWorkErrorInfo){
