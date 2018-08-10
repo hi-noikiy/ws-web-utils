@@ -1,35 +1,29 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import FetchStatus from '../fetch-status';
+import FetchStatus from '../fetchStatus';
 import {
-    LoadingView,
-    FailureView,
-    ErrorView,
-    NullDataView,
+    Loading,
+    Failure,
+    Error,
+    NullData,
 } from './fetchView';
-import {libraryConfig} from "../libraryConfig";
-
-
-
-const stateHOC = (initHocParams = {})=>{
+import { config } from "../config";
+const stateHOC = (initHocParams = {}) => {
     const hocParams = Object.assign({}, {
-        LoadingView,
-        FailureView,
-        ErrorView,
-        NullDataView,
+        LoadingView: Loading,
+        FailureView: Failure,
+        ErrorView: Error,
+        NullDataView: NullData,
     }, initHocParams)
-    return (WrappedComponent)=>{
+    return (WrappedComponent) => {
         return class StateContainer extends WrappedComponent {
             static navigationOptions = WrappedComponent.navigationOptions;
-            static propTypes = {
+            static propTypes = {};
+            static defaultProps = {};
 
-            };
-            static defaultProps = {
-
-            };
-            componentDidMount(){
+            componentDidMount() {
                 super.hocComponentDidMount && super.hocComponentDidMount()
             }
+
             render() {
 
                 const {
@@ -38,26 +32,25 @@ const stateHOC = (initHocParams = {})=>{
 
                 const {
                     detail,
-                    keyFunc,
                 } = hocParams
 
-                if(detail){
+                if (detail) {
 
-                    const key = super.hocDetailKey&&super.hocDetailKey()
+                    const key = super.hocDetailKey && super.hocDetailKey()
 
-                    if(!key){
-                        libraryConfig.ToastError('装饰器参数传递错误')
+                    if (!key) {
+                        config.ToastError('装饰器参数传递错误')
                         return null
                     }
 
                     return this.showView(fetchStatus[key])
 
-                }else {
+                } else {
                     return this.showView(fetchStatus)
                 }
             }
-            showView(fetchStatus){
 
+            showView(fetchStatus) {
                 const {
                     height,
                     LoadingView,
@@ -66,30 +59,30 @@ const stateHOC = (initHocParams = {})=>{
                     NullDataView,
                 } = hocParams
 
-                const LoadingViewStyle = Object.assign({},{
-                    autoLayout : height==undefined?true:false,
+                const LoadingViewStyle = Object.assign({}, {
+                    autoLayout: height === undefined,
                     height,
                 })
 
                 switch (fetchStatus) {
                     case FetchStatus.l:
-                        return  (
+                        return (
                             <LoadingView
                                 {...LoadingViewStyle}
                             />
                         )
                     case FetchStatus.s:
 
-                        if(super.hocNullDataFunc&&super.hocNullDataFunc()){
-                            return  <NullDataView {...LoadingViewStyle}/>
-                        }else {
-                            return <WrappedComponent {...this.props} stateHOCState={this.state}/>
+                        if (super.hocNullDataFunc && super.hocNullDataFunc()) {
+                            return <NullDataView {...LoadingViewStyle} />
+                        } else {
+                            return <WrappedComponent {...this.props} stateHOCState={this.state} />
                         }
 
                     case FetchStatus.f:
-                        return  <FailureView {...LoadingViewStyle}/>
+                        return <FailureView {...LoadingViewStyle} />
                     case FetchStatus.e:
-                        return  <ErrorView {...LoadingViewStyle}/>
+                        return <ErrorView {...LoadingViewStyle} />
                     default :
                         return null
                 }

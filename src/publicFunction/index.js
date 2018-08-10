@@ -7,7 +7,7 @@ export function getDateDiff(dateTimeStamp, citme) {
     var minute = day / 1440;
     var second = day / 86400;
     var result;
-    if (citme == undefined) {
+    if (citme === undefined) {
         var now = new Date().getTime();
         var diffValue = now - dateTimeStamp * 1000;
     } else {
@@ -45,14 +45,11 @@ export function getDateDiff(dateTimeStamp, citme) {
 //特殊方法   倒计时还有几天或者几小时结束
 export function teshuGetDateDiff(dateTimeStamp, citme) {
     var day = 86400000;
-    var week = day * 7;
-    var month = day * 30;
-    var year = day * 365;
     var hours = day / 24;
     var minute = day / 1440;
     var second = day / 86400;
     var result;
-    if (citme == undefined) {
+    if (citme === undefined) {
         var now = new Date().getTime();
         var diffValue = dateTimeStamp * 1000 - now;
     } else {
@@ -63,9 +60,6 @@ export function teshuGetDateDiff(dateTimeStamp, citme) {
         console.log("结束日期不能小于开始日期！");
         return "已结束";
     }
-    var yearC = diffValue / year;
-    var monthC = diffValue / month;
-    var weekC = diffValue / week;
     var dayC = diffValue / day;
     var hoursC = diffValue / hours;
     var minuteC = diffValue / minute;
@@ -85,14 +79,8 @@ export function teshuGetDateDiff(dateTimeStamp, citme) {
 //特殊方法   倒计时还有几天或者最新
 export function teshu2GetDateDiff(dateTimeStamp, citme) {
     var day = 86400000;
-    var week = day * 7;
-    var month = day * 30;
-    var year = day * 365;
-    var hours = day / 24;
-    var minute = day / 1440;
-    var second = day / 86400;
     var result;
-    if (citme == undefined) {
+    if (citme === undefined) {
         var now = new Date().getTime();
         var diffValue = now - dateTimeStamp * 1000;
     } else {
@@ -103,13 +91,7 @@ export function teshu2GetDateDiff(dateTimeStamp, citme) {
         console.log("结束日期不能小于开始日期！");
         return "已结束";
     }
-    var yearC = diffValue / year;
-    var monthC = diffValue / month;
-    var weekC = diffValue / week;
     var dayC = diffValue / day;
-    var hoursC = diffValue / hours;
-    var minuteC = diffValue / minute;
-    var secondC = diffValue / second;
     if (dayC >= 1) {
         result = parseInt(dayC) + "天";
     } else {
@@ -127,7 +109,7 @@ export function DateFormat(date, geshi) {
     }
 }
 
-Date.prototype.Format = function(fmt) {
+Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1, //月份
         "d+": this.getDate(), //日
@@ -146,7 +128,7 @@ Date.prototype.Format = function(fmt) {
         if (new RegExp("(" + k + ")").test(fmt))
             fmt = fmt.replace(
                 RegExp.$1,
-                RegExp.$1.length == 1
+                RegExp.$1.length === 1
                     ? o[k]
                     : ("00" + o[k]).substr(("" + o[k]).length)
             );
@@ -157,6 +139,7 @@ Date.prototype.Format = function(fmt) {
 export function toTimeStamp(e) {
     return Date.parse(new Date(e)) / 1000;
 }
+
 //获取当前时间戳
 export function getTimeStamp() {
     return Date.parse(new Date()) / 1000;
@@ -183,36 +166,39 @@ export function priceUnit(e) {
 export function toQueryString(obj) {
     return obj
         ? Object.keys(obj)
-              .sort()
-              .map(function(key) {
-                  var val = obj[key];
-                  if (Array.isArray(val)) {
-                      return val
-                          .sort()
-                          .map(function(val2) {
-                              return (
-                                  encodeURIComponent(key) +
-                                  "[]=" +
-                                  encodeURIComponent(val2)
-                              );
-                          })
-                          .join(",");
-                  }
-                  if (val) {
-                      return (
-                          encodeURIComponent(key) +
-                          "=" +
-                          encodeURIComponent(val)
-                      );
-                  } else {
-                      return encodeURIComponent(key) + "=";
-                  }
-              })
-              .join("&")
+            .sort()
+            .map(function (key) {
+                var val = obj[key];
+                if (Array.isArray(val)) {
+                    return val
+                        .sort()
+                        .map(function (val2) {
+                            return (
+                                encodeURIComponent(key) +
+                                "[]=" +
+                                encodeURIComponent(val2)
+                            );
+                        })
+                        .join(",");
+                }
+                if (val) {
+                    return (
+                        encodeURIComponent(key) +
+                        "=" +
+                        encodeURIComponent(val)
+                    );
+                } else {
+                    return encodeURIComponent(key) + "=";
+                }
+            })
+            .join("&")
         : "";
 }
 
-//HTML转义
+/**
+ * HTML转义
+ * @return {string}
+ */
 export function HTMLEncode(html) {
     var temp = document.createElement("div");
     temp.textContent != null
@@ -223,7 +209,10 @@ export function HTMLEncode(html) {
     return output;
 }
 
-//HTML反转义
+/**
+ * HTML反转义
+ * @return {string}
+ */
 export function HTMLDecode(text) {
     var temp = document.createElement("div");
     temp.innerHTML = text;

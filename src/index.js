@@ -1,9 +1,9 @@
-import fetchData from './fetch-data-module'
-import fetchStatus from './fetch-status'
-import storageModule from './storage-module'
-import stateHoc from './state-hoc'
-import * as publicFunction from './public-function'
-export {initLibraryConfigFunc} from './libraryConfig'
+import fetchData from './fetchDataModule'
+import fetchStatus from './fetchStatus'
+import storageModule from './storageModule'
+import stateHoc from './stateHoc'
+import * as publicFunction from './publicFunction'
+export {initLibraryConfigFunc} from './config'
 
 export {
     fetchData,
