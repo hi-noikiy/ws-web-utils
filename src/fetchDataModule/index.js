@@ -9,7 +9,6 @@ export default class FetchDataModule {
         const {
             getLogin,
             pushLogin,
-            Modal,
         } = config
         const login = getLogin()
         if (api) {
@@ -25,7 +24,8 @@ export default class FetchDataModule {
                 return this.fetchData({ api, params });
             }
         } else {
-            Modal.warning({ title: 'FetchDataModule模块调用异常，请检查传递参数' });
+            // noinspection JSAnnotator
+            throw new 'params error : missing or error api'
         }
     }
 
@@ -33,7 +33,7 @@ export default class FetchDataModule {
      *  处理请求的接口
     */
     static fetchData({ api, params }) {
-        const { Modal, showLoading, } = config
+        const { showLoading, } = config
         if (api.showLoading) {
             showLoading()
         }
@@ -42,22 +42,7 @@ export default class FetchDataModule {
         } else if (api.method === "POST") {
             return this.post({ api, params })
         } else {
-            Modal.alert("接口预定义信息错误", `接口名:${api.url}${"\b"}错误类型:请求方式异常`, [
-                {
-                    text: "查看接口地址",
-                    onPress: () => {
-                        console.warn(
-                            `接口预定义信息错误的接口地址:${api.url}`
-                        );
-                    }
-                },
-                {
-                    text: "确定",
-                    onPress: () => {
-                        console.warn("请处理错误接口");
-                    }
-                }
-            ]);
+            throw new `错误类型:请求方式异常，接口名:${api.url}`
         }
     }
 
@@ -84,6 +69,7 @@ export default class FetchDataModule {
             })
 
     }
+
     /*
      *  POST请求
     */
@@ -203,7 +189,6 @@ export default class FetchDataModule {
         const {
             APP_ROOT_CONFIG,
             Toast,
-            Modal,
         } = config
 
         fetch(APP_ROOT_CONFIG.errorCollectApi, {
@@ -217,42 +202,11 @@ export default class FetchDataModule {
         })
             .then(res => {
                 if (!res.ok) {
-                    Modal.alert("提交错误的接口都报错了", `肿么办ﾍ(;´Д｀ﾍ)`, [
-                        {
-                            text: "GG",
-                            onPress: () => {
-                                Toast.warning('你选择了GG')
-                            }
-                        }, {
-                            text: "人肉联系开发人员",
-                            onPress: () => {
-                                Modal.alert(
-                                    `接口的使用者是 ${APP_ROOT_CONFIG.errorApiDeveloper.name}`,
-                                    '是否要拨打电话联系开发者',
-                                    [
-                                        {
-                                            text: '取消',
-                                            onPress: () => {
-                                            }
-                                        },
-                                        {
-                                            text: '拨打',
-                                            onPress: () => {
-                                            }
-                                        },
-                                    ]
-                                )
-                            }
-                        }, {
-                            text: "确定",
-                            onPress: () => {
-                            }
-                        }
-                    ]);
+                    throw `错误收集接口错误：${APP_ROOT_CONFIG.errorApiDeveloper.name}`
                 } else {
                     res.json()
                         .then(e => {
-                            Toast.info("服务器异常提交成功");
+                            Toast.info("异常提交成功");
                         })
                 }
             })
